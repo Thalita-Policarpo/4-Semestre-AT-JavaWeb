@@ -1,6 +1,4 @@
-# 4-Semestre-AT-JavaWeb
-Assessement JavaWeb
-# Desenvolvimento de Serviços Web e Testes com Java
+# Assessement : Desenvolvimento de Serviços Web e Testes com Java
 ### Professor: Elberth Lins Costa de Moraes
 
 ## API de Gerenciamento de Equipamentos de Prevenção e Combate a Incêndio (PCI)
