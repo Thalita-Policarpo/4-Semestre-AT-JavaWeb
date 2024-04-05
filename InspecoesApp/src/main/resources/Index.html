@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Desenvolvimento de Serviços Web e Testes com Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .content {
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">InspeçõesPCI</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/usuario/lista">Usuários</a></li>
+      <li><a href="/extintor/lista">Extintores</a></li>
+      <li><a href="/hidrante/lista">Hidrantes</a></li>
+      <li><a href="/inspecaoExtintor/lista">Inspeções de Extintores</a></li>
+      <li><a href="/inspecaoHidrante/lista">Inspeções de Hidrantes</a></li>
+    </ul>
+  </div>
+</nav>
+
+<body>
+
+<div class="header">
+        <h1>Desenvolvimento de Serviços Web e Testes com Java</h1>
+        <h3>Professor: Elberth Lins Costa de Moraes</h3>
+    </div>
+    <div class="content">
+    <h2>API de Gerenciamento de Equipamentos de Prevenção e Combate a Incêndio (PCI)</h2>
+    <p>Este projeto é um sistema de inspeção de equipamentos, incluindo extintores e hidrantes. Ele permite a inclusão, exclusão e listagem de usuários, extintores, hidrantes e suas respectivas inspeções.</p>
+   
+    <p>O sistema permite que os usuários realizem inspeções em extintores e hidrantes. As informações sobre cada inspeção, incluindo a data da inspeção e o status do equipamento.</p>
+    
+
+    <h2>Rotas</h2>
+      
+    <h4>ViaCEPController</h4> 
+    <ul> 	    
+	    <li><b>viaCEP/obterPorCEP/{cep}:</b> Retorna a consulta de CEP com o CEP fornecido.</li> 
+    </ul>
+
+    <h4>UsuarioController</h4>
+    <ul>
+        <li><b>usuario/obterLista:</b> Retorna uma lista de todos os usuários.</li>
+        <li><b>usuario/incluir:</b> Cria um novo usuário e retorna uma mensagem de confirmação.</li>
+        <li><b>usuario/excluir/{id}:</b> Exclui um usuário com base no ID fornecido e retorna uma mensagem de confirmação.</li>
+        <li><b>usuario/obterPorId/{id}:</b> Retorna o usuário com o ID fornecido.</li>
+    </ul>
+
+    <h4>ExtintorController</h4>
+    <ul>
+        <li><b>extintor/obterLista:</b> Retorna uma lista de todos os extintores.</li>
+        <li><b>extintor/incluir:</b> Cria um novo extintor e retorna uma mensagem de confirmação.</li>
+        <li><b>extintor/excluir/{id}:</b> Exclui um extintor com base no ID fornecido e retorna uma mensagem de confirmação.</li>
+        <li><b>extintor/obterPorId/{id}:</b> Retorna o extintor com o ID fornecido.</li>
+    </ul>
+
+    <h4>HidranteController</h4>
+    <ul>
+        <li><b>hidrante/obterLista:</b> Retorna uma lista de todos os hidrantes.</li>
+        <li><b>hidrante/incluir:</b> Cria um novo hidrante e retorna uma mensagem de confirmação.</li>
+        <li><b>hidrante/excluir/{id}:</b> Exclui um hidrante com base no ID fornecido e retorna uma mensagem de confirmação.</li>
+        <li><b>hidrante/obterPorId/{id}:</b> Retorna o hidrante com o ID fornecido.</li>
+    </ul>
+    <h4>InspecaoExtintorController</h4>
+<ul>
+    <li><b>inspecaoExtintor/obterLista:</b> Retorna uma lista de todas as inspeções de extintores.</li>
+    <li><b>inspecaoExtintor/incluir:</b> Cria uma nova inspeção de extintor e retorna uma mensagem de confirmação.</li>
+    <li><b>inspecaoExtintor/excluir/{id}:</b> Exclui uma inspeção de extintor com base no ID fornecido e retorna uma mensagem de confirmação.</li>
+    <li><b>inspecaoExtintor/obterPorId/{id}:</b> Retorna a inspeção de extintor com o ID fornecido.</li>
+</ul>
+
+<h4>InspecaoHidranteController</h4>
+<ul>
+    <li><b>inspecaoHidrante/obterLista:</b> Retorna uma lista de todas as inspeções de hidrantes.</li>
+    <li><b>inspecaoHidrante/incluir:</b> Cria uma nova inspeção de hidrante e retorna uma mensagem de confirmação.</li>
+    <li><b>inspecaoHidrante/excluir/{id}:</b> Exclui uma inspeção de hidrante com base no ID fornecido e retorna uma mensagem de confirmação.</li>
+    <li><b>inspecaoHidrante/obterPorId/{id}:</b> Retorna a inspeção de hidrante com o ID fornecido.</li>
+</ul>
+    
+
+    <h2>Relacionamentos entre Classes</h2>
+
+<p>
+<b>Equipamento:</b> Esta é uma classe abstrata que serve como base para outras classes. Ela possui atributos como 'id', 'numeroControleInterno' e 'localizacao'.
+</p>
+
+<p>
+<b>Extintor:</b> Esta classe estende a classe Equipamento e adiciona seus próprios atributos como 'numeroCilindro', 'numeroSeloInmetro' e 'cargaExtintora'.
+</p>
+
+<p>
+<b>Hidrante:</b> Esta classe também estende a classe Equipamento e adiciona seus próprios atributos como 'dataDeInstalacao', 'alturaDeFixacao' e 'tipoDeHidrante'.
+</p>
+
+<p>
+<b>InspecaoExtintor:</b> Esta classe tem um relacionamento com a classe Extintor. Ela representa uma inspeção de um extintor e possui atributos para armazenar os detalhes da inspeção.
+</p>
+
+<p>
+<b>InspecaoHidrante:</b> Semelhante à InspecaoExtintor, esta classe representa uma inspeção de um hidrante. Ela tem um relacionamento com a classe Hidrante.
+</p>
+
+<p>
+<b>InspecaoUsuario:</b> Esta classe representa o relacionamento entre um usuário e uma inspeção. Ela tem relacionamentos com as classes Usuario, InspecaoExtintor e InspecaoHidrante.
+</p>
+
+<p>
+<b>Usuario:</b> Esta classe representa um usuário no sistema. Ela possui atributos como 'nome', 'email', 'logradouro', 'localidade' e 'uf'.
+</p>
+
+<p>
+<b>Controllers:</b> As classes UsuarioController, ViaCepController, etc. são controladores que lidam com solicitações e respostas HTTP. Eles usam as classes de serviço para realizar operações.
+</p>
+
+ </div>
+</body>
+</html>
